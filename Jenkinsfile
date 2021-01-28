@@ -11,27 +11,29 @@ pipeline {
      
     stages {
         stage('checkout & get commit_ID') {
-            checkout scm
+            steps {
+                checkout scm
             sh "git  rev-parse --short HEAD > .git/commit-id"
             commit_id = readfile('.git/commit-id').trim()
-        }
-
-        stage('build docker image') {    
-            steps {
-                dcript {
-                    dockerImage = docker.build registry
-                }
             }
         }
 
-        stage('push docker_hub') {    
-            steps {
-                script {
-                    docker.withRegistry('', docker_credentials) {
-                        dockerImage.push()
-                    }
-                }
-            }
-        }
+        // stage('build docker image') {    
+        //     steps {
+        //         script {
+        //             dockerImage = docker.build registry
+        //         }
+        //     }
+        // }
+
+        // stage('push docker_hub') {    
+        //     steps {
+        //         script {
+        //             docker.withRegistry('', docker_credentials) {
+        //                 dockerImage.push()
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
