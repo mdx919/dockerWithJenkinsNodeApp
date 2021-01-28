@@ -1,5 +1,5 @@
-pipeline {
-    def commit_id
+node {
+    def commit_id = ''
     def dockerImage = ''
     def registry = 'mdx919/node_with_docker'
     def docker_credentials = '	dockerhub_id'
