@@ -1,10 +1,14 @@
-node {
-    def commit_id = ''
-    def dockerImage = ''
-    def registry = 'mdx919/node_with_docker'
-    def docker_credentials = '	dockerhub_id'
-    agent { docker { image 'node:14' } }
+pipeline {
 
+    agent any
+
+    environment {
+        commit_id = ''
+        dockerImage = ''
+        registry = 'mdx919/node_with_docker'
+        docker_credentials = '	dockerhub_id'
+    }
+     
     stages {
         stage('checkout & get commit_ID') {
             checkout scm
