@@ -1,6 +1,8 @@
 pipeline {
 
-    agent any
+    agent {
+        label 'docker' 
+    }
 
     environment {
         commit_id = ''
