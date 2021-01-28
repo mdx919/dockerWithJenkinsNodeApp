@@ -21,13 +21,13 @@ pipeline {
             }
         }
 
-        // stage('build docker image') {    
-        //     steps {
-        //         script {
-        //             dockerImage = docker.build registry
-        //         }
-        //     }
-        // }
+        stage('build docker image') {    
+            steps {
+                script {
+                    dockerImage = docker.build registry
+                }
+            }
+        }
 
         // stage('push docker_hub') {    
         //     steps {
